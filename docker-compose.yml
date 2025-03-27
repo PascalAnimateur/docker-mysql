@@ -1,0 +1,18 @@
+services:
+  mysql:
+    image: mysql:8
+    container_name: mysql
+    hostname: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    volumes:
+      - ${DOCKER_DATA-./data}/mysql/data:/var/lib/mysql
+
+networks:
+  default:
+    name: proxy
+    external: true
